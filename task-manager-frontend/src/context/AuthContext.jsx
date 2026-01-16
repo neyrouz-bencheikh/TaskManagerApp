@@ -11,13 +11,14 @@ export const AuthProvider = ({ children }) => {
     if (token) localStorage.setItem("token", token);
   }, [token]);
 
+  //fct login
   const login = async (email, password) => {
     const data = await loginApi(email, password);
-    setToken(data.token);
-    setUser(data.user);
+    setToken(data.token); //stocke le token reçu
+    setUser(data.user); //stocke user data
   };
 
-  // 👉 Ici tu mets la fonction logout
+  //fct logout
   const logout = () => {
     logoutApi(); // supprime le token côté backend si nécessaire
     setToken("");
