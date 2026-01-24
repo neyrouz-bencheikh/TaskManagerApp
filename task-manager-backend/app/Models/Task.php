@@ -9,4 +9,10 @@ class Task extends Model
 protected $fillable = [
   'title','description','status','priority','category','due_date','is_overdue'
 ];
+ 
+public function user()
+{
+    return $this->belongsTo(User::class); //Chaque tâche appartient à un utilisateur
+}
+ 
 }
