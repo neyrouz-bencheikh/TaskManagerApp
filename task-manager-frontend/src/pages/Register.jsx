@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { register } from "../services/authService";
+import { Link } from "react-router-dom";
+import userIcon from "../assets/icons/login.png";
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -24,25 +26,63 @@ export default function Register() {
       localStorage.setItem("token", data.token);
       window.location.href = "/";
     } catch (err) {
-      setError("Erreur lors de l'inscription");
+      setError("Error! Try Again");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="container center">
-      <form className="card" onSubmit={submit}>
-        <h2>Sign up</h2>
-        {error && <div className="alert">{error}</div>}
-        <input className="input" name="name" placeholder="Name" value={form.name} onChange={handleChange} />
-        <input className="input" name="email" placeholder="Email" value={form.email} onChange={handleChange} />
-        <input className="input" type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} />
-        <input className="input" type="password" name="password_confirmation" placeholder="Confirm password" value={form.password_confirmation} onChange={handleChange} />
-        <button className="btn primary" type="submit" disabled={loading}>
-          {loading ? "Creating" : "Signed up"}
-        </button>
-      </form>
+    <div className="login-wrapper">
+      
+      <div className="login">
+        <form className="login-card" onSubmit={submit}>
+          <div className="login-icon"><img src={userIcon} alt="Signup Icon" /></div>
+          <h2>Sign up</h2>
+
+          {error && <div className="alert error">{error}</div>}
+
+          <input
+            name="name"
+            placeholder="Name"
+            value={form.name}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={form.password}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password_confirmation"
+            placeholder="Confirm Password"
+            value={form.password_confirmation}
+            onChange={handleChange}
+            required
+          />
+
+          <button type="submit" disabled={loading}>
+            {loading ? "Creating..." : "Sign up"}
+          </button>
+
+          <p style={{ marginTop: "1rem" }}>
+            Already have an account? <Link to="/login">Login</Link>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }

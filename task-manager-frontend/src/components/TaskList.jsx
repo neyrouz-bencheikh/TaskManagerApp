@@ -1,4 +1,6 @@
 import dayjs from "dayjs";
+import EditIcon from "../assets/icons/edit.png";
+import TrashIcon from "../assets/icons/trash.png";
 
 const PC = {
   High: "#e53935",
@@ -28,8 +30,15 @@ export default function TaskList({ tasks, onEdit, onDelete }) {
                 <td>{t.category}</td>
                 <td>{t.due_date ? dayjs(t.due_date).format("YYYY-MM-DD") : "-"}</td>
                 <td>
-                  <button className="btn" onClick={() => onEdit(t)}>Edit</button>
-                  <button className="btn danger" onClick={() => onDelete(t.id)}>Delete</button>
+                  <button className="icon-btn" onClick={() => onEdit(t)}>
+                    <img src={EditIcon} alt="Edit" />
+                  </button>
+
+                  <button className="icon-btn danger" onClick={() => onDelete(t.id)}>
+                    <img src={TrashIcon} alt="Delete" />
+                  </button>
+
+
                 </td>
               </tr>
             );

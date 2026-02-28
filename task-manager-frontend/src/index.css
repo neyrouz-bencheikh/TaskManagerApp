@@ -479,3 +479,133 @@ body {
     opacity: 0.5;
   }
 }
+
+/* Subtle fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* Login Page Layout */
+.login-wrapper {
+  display: flex;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+  background: var(--bg);
+}
+
+/* Right Panel */
+.login {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Login Card */
+.login-card {
+  background: var(--card);
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.login-icon img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+
+.login-card h2 {
+  margin-bottom: 1rem;
+  color: var(--text);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Inputs */
+.login-card input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  font-size: 15px;
+  background: var(--card);
+  color: var(--text);
+}
+
+.login-card input:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Error Message */
+.alert.error {
+  background: var(--danger);
+  color: white;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Forgot Password Link */
+.login-links {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.login-links a {
+  color: var(--primary);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+/* Submit Button */
+.login-card button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-card button[type="submit"]:hover {
+  background: var(--primary-hover);
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.75rem;  
+}
+
+.icon-btn img {
+  width: 35px;           
+  height: 35px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.icon-btn:hover img {
+  transform: scale(1.15); 
+}
+
+

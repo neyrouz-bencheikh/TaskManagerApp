@@ -14,16 +14,31 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return Task::all();
+        $tasks = auth()->user()->tasks; 
+        return response()->json($tasks);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) 
-    { 
-        return Task::create($request->all());
-    }
+    public function store(Request $request)
+{
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'status' => 'in:To Do,In Progress,Done,Cancelled',
+        'priority' => 'in:High,Medium,Low',
+        'category' => 'in:Personal,Work,Other',
+        'due_date' => 'nullable|date',
+    ]);
+
+    $task = new Task($request->all());
+    $task->user_id = auth()->id();
+    $task->save();
+
+    return response()->json($task, 201);
+}
+
 
     /**
      * Display the specified resource.

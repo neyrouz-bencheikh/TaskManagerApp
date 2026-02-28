@@ -8,6 +8,7 @@ import FiltersBar from "../components/FiltersBar";
 import TaskForm from "../components/TaskForm";
 import TaskList from "../components/TaskList";
 import KanbanBoard from "../components/KanbanBoard";
+import userIcon from "../assets/icons/logout.png";
 
 export default function Dashboard() {
   const { logout } = useContext(AuthContext);
@@ -114,7 +115,7 @@ export default function Dashboard() {
         <h1>Task Manager</h1>
         <div style={{ display: "flex", gap: "0.5rem" }}>
           <ThemeToggle theme={theme} setTheme={setTheme} />
-          <button className="btn danger" onClick={logout}>Logout</button>
+          <button className="icon-btn danger" onClick={logout}><img src={userIcon} alt="Logout Icon" /></button>
         </div>
       </header>
 
